@@ -1,26 +1,31 @@
-<div align="center">
+name: Generate Contribution Snake
 
-<!-- Custom Terminal Banner via URL -->
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=24&pause=1000&color=00F2FE&center=true&vCenter=true&width=700&height=100&lines=HELLO%2C+I'M+ANUKET+SINGH;AI%2FML+%E2%80%A2+COMPUTER+VISION+%E2%80%A2+DATA;BUILDING+SYSTEMS+%2B+SOFTWARE;WELCOME+TO+MY+DIGITAL+TERMINAL" alt="Typing SVG" />
+on:
+  schedule:
+    - cron: "0 0 * * *"
+  workflow_dispatch:
 
-<br/>
+jobs:
+  generate:
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
 
-<!-- Action Buttons -->
-<a href="https://github.com/AnuketSingh">
-  <img src="https://img.shields.io/badge/GITHUB-100000?style=for-the-badge&logo=github&logoColor=white&labelColor=090D16&color=00F2FE" alt="GitHub" />
-</a>
-<a href="https://linkedin.com/in/">
-  <img src="https://img.shields.io/badge/LINKEDIN-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white&labelColor=090D16" alt="LinkedIn" />
-</a>
-<a href="mailto:anuketsingh@example.com">
-  <img src="https://img.shields.io/badge/EMAIL-EA4335?style=for-the-badge&logo=gmail&logoColor=white&labelColor=090D16" alt="Email" />
-</a>
+    steps:
+      - name: Generate github-contribution-grid-snake.svg
+        uses: Platane/snk/svg-only@v3
+        with:
+          github_user_name: ${{ github.repository_owner }}
+          outputs: |
+            dist/github-contribution-grid-snake.svg?palette=github-dark&color_snake=#00f2fe
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-</div>
-
-<br/>
-
-```sys
-================================================================================
-                    01 / ABOUT ME
-================================================================================
+      - name: Push github-contribution-grid-snake.svg to output branch
+        uses: crazy-max/ghaction-github-pages@v3.1.0
+        with:
+          target_branch: output
+          build_dir: dist
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
