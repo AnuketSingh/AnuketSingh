@@ -1,31 +1,37 @@
-name: Generate Contribution Snake
+# Anuket Singh
 
-on:
-  schedule:
-    - cron: "0 0 * * *"
-  workflow_dispatch:
+Computer Science Student passionate about **AI/ML**, **Computer Vision**, and **Software Engineering**.
 
-jobs:
-  generate:
-    permissions:
-      contents: write
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
+---
 
-    steps:
-      - name: Generate github-contribution-grid-snake.svg
-        uses: Platane/snk/svg-only@v3
-        with:
-          github_user_name: ${{ github.repository_owner }}
-          outputs: |
-            dist/github-contribution-grid-snake.svg?palette=github-dark&color_snake=#00f2fe
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+### About Me
+- 🎓 Pursuing B.Tech in **Computer Science and Engineering**
+- 🔭 Working on **Computer Vision & Gait Recognition Systems**
+- 💡 Exploring **Data Analytics & Machine Learning**
+- 🛠️ Writing core algorithms in **C++** and **Python**
 
-      - name: Push github-contribution-grid-snake.svg to output branch
-        uses: crazy-max/ghaction-github-pages@v3.1.0
-        with:
-          target_branch: output
-          build_dir: dist
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+---
+
+### Tech Stack
+
+**Languages**  
+`C++` • `Python` • `C` • `JavaScript` • `SQL`
+
+**AI & Data**  
+`OpenCV` • `Pandas` • `NumPy` • `Scikit-Learn` • `Matplotlib`
+
+**Tools & Platforms**  
+`Git` • `GitHub` • `VS Code` • `Linux`
+
+---
+
+### Featured Projects
+
+- **Gait Recognition System**: Computer vision project utilizing feature extraction to identify movement patterns.
+- **Data Analytics Workflows**: Exploratory models and algorithms for processing structured datasets.
+
+---
+
+### Connect
+- **GitHub**: [AnuketSingh](https://github.com/AnuketSingh)
+- **LinkedIn**: [LinkedIn Profile](https://linkedin.com)
